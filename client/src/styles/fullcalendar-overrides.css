@@ -1,0 +1,15 @@
+/* FullCalendar basic style tweaks to match Tailwind glass cards */
+.fc .fc-daygrid-event {
+  background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.2);
+  color: #1e293b;
+  padding: 6px 8px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.dark .fc .fc-daygrid-event {
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
+  color: #e6eefc;
+}
