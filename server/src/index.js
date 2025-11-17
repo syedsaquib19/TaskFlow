@@ -18,13 +18,17 @@ import healthRoutes from "./routes/health.js";
 import { notFound, errorHandler } from "./middleware/error.js";
 import "./jobs/scheduler.js";
 import { sendReminderEmail } from "./utils/mailer.js";
-// OPTIONAL: chat socket initializer (only if you created it)
-import { initChatSocket } from "./socket/chat.js"; // make sure path is correct
+
+import { initChatSocket } from "./socket/chat.js"; 
 
 const app = express();
 
-/** CORS: allow multiple origins via env or sensible defaults */
-const origins = (process.env.CLIENT_URLS || "http://localhost:5173,http://127.0.0.1:5173")
+
+const origins = [
+  "http://localhost:5173",
+  "https://id-ten.vercel.app" // your frontend domain
+];
+
   .split(",")
   .map(s => s.trim())
   .filter(Boolean);
