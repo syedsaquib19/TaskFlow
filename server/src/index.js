@@ -13,7 +13,7 @@ import { Server as SocketServer } from "socket.io";
 import aiRoutes from "./routes/ai.js";
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/auth.js";
-import taskRoutes from "./routes/tasks.js";
+import taskRoutes from "./routes/Tasks.js";
 import healthRoutes from "./routes/health.js";
 import { notFound, errorHandler } from "./middleware/error.js";
 import "./jobs/scheduler.js";
