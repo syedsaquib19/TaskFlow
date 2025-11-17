@@ -29,10 +29,6 @@ const origins = [
   "https://id-ten.vercel.app" // your frontend domain
 ];
 
-  .split(",")
-  .map(s => s.trim())
-  .filter(Boolean);
-
 app.use(cors({
   origin: (origin, cb) => {
     if (!origin) return cb(null, true);
