@@ -25,7 +25,7 @@ router.post("/:taskId", auth, upload.single("file"), async (req, res) => {
         task.attachments.push(att);
         await task.save();
 
-        // notify real-time
+        
         const io = req.app.get("io");
         io.emit("task:update", task);
 

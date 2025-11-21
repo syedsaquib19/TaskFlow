@@ -26,19 +26,15 @@ const app = express();
 
 const origins = [
   "http://localhost:5173",
-  "https://id-ten.vercel.app" // your frontend domain
+  "https://id-ten.vercel.app" 
 ];
 
-app.use(cors({
-  origin: (origin, cb) => {
-    if (!origin) return cb(null, true);
-    if (origins.includes(origin)) return cb(null, true);
-    return cb(new Error("CORS: Origin not allowed"), false);
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 
 /** Security & perf */
 app.use(helmet());
@@ -83,8 +79,6 @@ const io = new SocketServer(server, {
 // store io on app so routes can use it
 app.set("io", io);
 
-// initialize any socket modules that need `io`
-// ensure initChatSocket exists and is imported above
 if (typeof initChatSocket === "function") {
   initChatSocket(io);
 }
